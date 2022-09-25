@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUDS project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wraper">
+        <!--title-->
+        <div class="head">
+            <h1>CRUDS</h1>
+            <h4>create read update delete search</h4>
+        </div>
+        <!--input section-->
+        <div class="input">
+            <input type="text" class="title full-width" id="title" placeholder="title">
+            <!--flex input for price section-->
+            <div class="price-input">
+                <input type="number" class="price" id="price" placeholder="price">
+                <input type="number" class="taxes" id="taxes" placeholder="Taxes">
+                <input type="number" class="ads" id="ads" placeholder="ads">
+                <button class="btn" id="total">total</button>
+            </div>
+            <!--class:full-width is shared class >> 100% width for input field-->
+            <!--class:btn is shared class for all btns-->
+            <input type="text" class="count full-width" id="count" placeholder="count">
+            <input type="text" class="category full-width" id="category" placeholder="category">
+            <button class="crate btn full-width" id="create">Create</button>
+            <input type="text" class="search full-width" id="search" placeholder="Search">
+            <div class="search-input">
+                <button class="btn search-by-title" id="searchByTitle">
+                    Search by Title
+                </button>
+                <button class="search-by-cat btn" id="searchByCategory">Search by Category</button>
+            </div>
+            <button class="delete-all btn full-width" id="deleteAll">Delete All</button>
+        </div>
+
+    </div>
+
+
+
+    <script src="main.js"></script>
+</body>
+
+</html>
