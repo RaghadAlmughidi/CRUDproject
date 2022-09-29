@@ -32,14 +32,33 @@
             <input type="number" class="count full-width" id="count" placeholder="count">
             <input type="text" class="category full-width" id="category" placeholder="category">
             <button class="crate btn full-width" id="btnCreate">Create</button>
+
+        </div>
+        <div class="output">
             <input type="text" class="search full-width" id="search" placeholder="Search">
             <div class="search-input">
-                <button class="btn search-by-title" id="btnSearchByTitle">
-                    Search by Title
-                </button>
+                <button class="btn search-by-title" id="btnSearchByTitle"> Search by Title</button>
                 <button class="search-by-cat btn" id="searchByCategory">Search by Category</button>
             </div>
-            <button class="delete-all btn full-width" id="btnDeleteAll">Delete All</button>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>title</th>
+                    <th>price</th>
+                    <th>taxes</th>
+                    <th>ads</th>
+                    <th>discount</th>
+                    <th>total</th>
+                    <th>category</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+                <tbody id="tbody">
+
+
+                </tbody>
+            </table>
+
         </div>
 
     </div>
