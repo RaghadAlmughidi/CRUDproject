@@ -22,7 +22,7 @@ function getTotal() {
 }
 
 
-//createpoduct
+//===========createpoduct=================
 
 
 
@@ -53,7 +53,7 @@ btnCreate.onclick = function() {
     ShowData();
 }
 
-//clear input
+//==========clear input====================
 function clearData() { //clear data after create it
     title.value = '';
     price.value = '';
@@ -64,7 +64,7 @@ function clearData() { //clear data after create it
     count.value = '';
     category.value = '';
 }
-
+//============read table===============
 function ShowData() { //show table data by loop in content
     let table = '';
     for (let i = 0; i < dataProduct.length; i++) {
@@ -79,14 +79,32 @@ function ShowData() { //show table data by loop in content
             <td>${dataProduct[i].btnTotal}</td>
             <td>${dataProduct[i].category}</td>
             <td><button id="update" class="btn">Update</button></td>
-            <td><button id="delete" class="btn">Delete</button></td>
+            <td><button id="delete" onclick="deleteOneProduct(${i})" class="btn">Delete</button></td>
         </tr>`
     }
     document.getElementById('tbody').innerHTML = table;
+    //==============delete all btn=============
+    let deleteAllBtn = document.getElementById('deleteAllbtn')
+    if (dataProduct.length > 0) {
+        deleteAllBtn.innerHTML = ` <button class = "btn full-width" onclick="deleteAll()"> Delete All </button>`
+    } else {
+        deleteAllBtn.innerHTML = '';
+    }
 
 }
+//==========dlete on priduct=======
+function deleteOneProduct(i) {
+    dataProduct.splice(i, 1); //delt item from list
 
-
+    localStorage.products = JSON.stringify(dataProduct); //reshow localstorage after delete
+    ShowData(); //show table age after delete
+}
+//==============delete all function=============
+function deleteAll() {
+    localStorage.clear(); //clear all storag
+    dataProduct.splice(0); //clear list from index 0 to end list
+    ShowData();
+}
 
 
 ShowData();
