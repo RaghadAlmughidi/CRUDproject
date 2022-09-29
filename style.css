@@ -57,7 +57,7 @@ input {
     margin-bottom: 1rem;
     color: var(--font-color);
     font-size: 1.4rem;
-    padding-left: 1rem;
+    padding-left: .5rem;
 }
 
 input:hover {
@@ -70,7 +70,7 @@ input:hover {
 
 ::placeholder {
     font-size: 1.3rem;
-    padding-left: 1rem;
+    padding-left: .3rem;
 }
 
 .price-input {

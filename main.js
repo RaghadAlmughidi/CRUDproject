@@ -11,6 +11,8 @@ let btnCreate = document.getElementById('btnCreate');
 let search = document.getElementById('search');
 let btnSearchByTitle = document.getElementById('btnSearchByTitle');
 let btnDeleteAll = document.getElementById('btnDeleteAll');
+let mood = 'create'
+let tmp; //tmprory variable totake data from update() to create()
 
 
 //get total
@@ -47,7 +49,24 @@ btnCreate.onclick = function() {
         category: category.value,
 
     }
-    dataProduct.push(product) //save obj in list
+    if (mood === 'create') {
+        //======== creat product whith spicifec count
+        if (product.count > 1) {
+            for (let i = 0; i < product.count; i++) {
+                dataProduct.push(product)
+            }
+        } else { dataProduct.push(product) }
+    } else {
+        dataProduct[tmp] = product
+        btnTotal.innerHTML = '';
+        mood = 'create'
+        btnCreate.innerHTML = 'Create';
+        count.style.display = 'block'
+
+
+    }
+
+    //save obj in list
     localStorage.setItem('products', JSON.stringify(dataProduct)) //storage data when reload never delete----json.stringfy=>convers list to sting brcaus local storage only exccept string
     clearData();
     ShowData();
@@ -66,6 +85,7 @@ function clearData() { //clear data after create it
 }
 //============read table===============
 function ShowData() { //show table data by loop in content
+    getTotal();
     let table = '';
     for (let i = 0; i < dataProduct.length; i++) {
         table +=
@@ -78,7 +98,7 @@ function ShowData() { //show table data by loop in content
             <td>${dataProduct[i].discount}</td>
             <td>${dataProduct[i].btnTotal}</td>
             <td>${dataProduct[i].category}</td>
-            <td><button id="update" class="btn">Update</button></td>
+            <td><button id="update" onclick="updateDate(${i})" class="btn">Update</button></td>
             <td><button id="delete" onclick="deleteOneProduct(${i})" class="btn">Delete</button></td>
         </tr>`
     }
@@ -86,13 +106,11 @@ function ShowData() { //show table data by loop in content
     //==============delete all btn=============
     let deleteAllBtn = document.getElementById('deleteAllbtn')
     if (dataProduct.length > 0) {
-        deleteAllBtn.innerHTML = ` <button class = "btn full-width" onclick="deleteAll()"> Delete All </button>`
-    } else {
-        deleteAllBtn.innerHTML = '';
+        deleteAllBtn.innerHTML = ` <button class = "btn full-width" onclick="deleteAll()"> Delete All (${dataProduct.length}) </button>`
     }
 
 }
-//==========dlete on priduct=======
+//==========delete one priduct===============
 function deleteOneProduct(i) {
     dataProduct.splice(i, 1); //delt item from list
 
@@ -104,6 +122,26 @@ function deleteAll() {
     localStorage.clear(); //clear all storag
     dataProduct.splice(0); //clear list from index 0 to end list
     ShowData();
+}
+//==============update data=================
+function updateDate(i) {
+    title.value = dataProduct[i].title;
+    price.value = dataProduct[i].price;
+    taxes.value = dataProduct[i].taxes;
+    ads.value = dataProduct[i].ads;
+    discount.value = dataProduct[i].discount;
+    getTotal();
+    count.style.display = 'none';
+    category.value = dataProduct[i].category;
+    btnCreate.innerHTML = 'Update'
+    mood = 'update';
+    tmp = i //let i are visable for all function GLOBAL
+    scroll({
+        top: 0,
+        behavior: "smooth"
+    })
+
+
 }
 
 
