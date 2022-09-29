@@ -21,24 +21,25 @@
             <input type="text" class="title full-width" id="title" placeholder="title">
             <!--flex input for price section-->
             <div class="price-input">
-                <input type="number" class="price" id="price" placeholder="price">
-                <input type="number" class="taxes" id="taxes" placeholder="Taxes">
-                <input type="number" class="ads" id="ads" placeholder="ads">
-                <button class="btn" id="total">total</button>
+                <input type="number" onkeyup="getTotal()" class="price" id="price" placeholder="price">
+                <input type="number" onkeyup="getTotal()" class="taxes" id="taxes" placeholder="Taxes">
+                <input type="number" onkeyup="getTotal()" class="ads" id="ads" placeholder="ads">
+                <input type="number" onkeyup="getTotal()" class="discount" id="discount" placeholder="discount">
+                <button class="btn" id="btnTotal">total</button>
             </div>
             <!--class:full-width is shared class >> 100% width for input field-->
             <!--class:btn is shared class for all btns-->
-            <input type="text" class="count full-width" id="count" placeholder="count">
+            <input type="number" class="count full-width" id="count" placeholder="count">
             <input type="text" class="category full-width" id="category" placeholder="category">
-            <button class="crate btn full-width" id="create">Create</button>
+            <button class="crate btn full-width" id="btnCreate">Create</button>
             <input type="text" class="search full-width" id="search" placeholder="Search">
             <div class="search-input">
-                <button class="btn search-by-title" id="searchByTitle">
+                <button class="btn search-by-title" id="btnSearchByTitle">
                     Search by Title
                 </button>
                 <button class="search-by-cat btn" id="searchByCategory">Search by Category</button>
             </div>
-            <button class="delete-all btn full-width" id="deleteAll">Delete All</button>
+            <button class="delete-all btn full-width" id="btnDeleteAll">Delete All</button>
         </div>
 
     </div>

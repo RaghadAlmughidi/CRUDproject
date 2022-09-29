@@ -55,6 +55,9 @@ input {
     height: 40px;
     border-radius: 8px;
     margin-bottom: 1rem;
+    color: var(--font-color);
+    font-size: 1.4rem;
+    text-align: center;
 }
 
 input:hover {
