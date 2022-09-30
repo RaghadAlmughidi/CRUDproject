@@ -35,10 +35,10 @@
 
         </div>
         <div class="output">
-            <input type="text" class="search full-width" id="search" placeholder="Search">
+            <input type="text" onkeyup=" searchData(this.value)" class="search full-width" id="search" placeholder="Search">
             <div class="search-input">
-                <button class="btn search-by-title" id="btnSearchByTitle"> Search by Title</button>
-                <button class="search-by-cat btn" id="searchByCategory">Search by Category</button>
+                <button onclick="getSearchMood(this.id)" class="btn search-by-title" id="btnSearchByTitle"> Search by Title</button>
+                <button onclick="getSearchMood(this.id)" class="search-by-cat btn" id="searchByCategory">Search by Category</button>
             </div>
             <div id="deleteAllbtn">
                 <!--delet all btn show up if there is data -->
@@ -66,7 +66,7 @@
 
     </div>
 
-
+    <h1 class="errmsg">doesn't support mobile screen</h1>
 
     <script src="main.js"></script>
 </body>

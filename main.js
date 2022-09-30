@@ -10,6 +10,7 @@ let category = document.getElementById('category');
 let btnCreate = document.getElementById('btnCreate');
 let search = document.getElementById('search');
 let btnSearchByTitle = document.getElementById('btnSearchByTitle');
+let searchByCategory = document.getElementById('searchByCategory');
 let btnDeleteAll = document.getElementById('btnDeleteAll');
 let mood = 'create'
 let tmp; //tmprory variable totake data from update() to create()
@@ -39,14 +40,14 @@ if (localStorage.products != null) {
 
 btnCreate.onclick = function() {
     let product = { //create object to orgnize
-        title: title.value,
+        title: title.value.toLowerCase(),
         price: price.value,
         taxes: taxes.value,
         ads: ads.value,
         discount: discount.value,
         btnTotal: btnTotal.innerHTML,
         count: count.value,
-        category: category.value,
+        category: category.value.toLowerCase(),
 
     }
     if (mood === 'create') {
@@ -145,4 +146,64 @@ function updateDate(i) {
 }
 
 
+//================search========================
+let searchMood = 'title';
+
+function getSearchMood(id) {
+    if (id == 'btnSearchByTitle') {
+        searchMood = 'title';
+    } else {
+        searchMood = 'category';
+    }
+    search.placeholder = 'search by ' + searchMood
+    search.focus()
+}
+
+
+
+function searchData(value) {
+    let table = '';
+    for (let i = 0; i < dataProduct.length; i++) {
+        if (searchMood == 'title') {
+
+
+            if (dataProduct[i].title.includes(value)) {
+                table +=
+                    `<tr>
+                <td>${i}</td>
+                <td>${dataProduct[i].title}</td>
+                <td>${dataProduct[i].price}</td>
+                <td>${dataProduct[i].taxes}</td>
+                <td>${dataProduct[i].ads}</td>
+                <td>${dataProduct[i].discount}</td>
+                <td>${dataProduct[i].btnTotal}</td>
+                <td>${dataProduct[i].category}</td>
+                <td><button id="update" onclick="updateDate(${i})" class="btn">Update</button></td>
+                <td><button id="delete" onclick="deleteOneProduct(${i})" class="btn">Delete</button></td>
+            </tr>`
+            }
+
+
+        } else {
+
+            if (dataProduct[i].category.includes(value)) {
+                table +=
+                    `<tr>
+                <td>${i}</td>
+                <td>${dataProduct[i].title}</td>
+                <td>${dataProduct[i].price}</td>
+                <td>${dataProduct[i].taxes}</td>
+                <td>${dataProduct[i].ads}</td>
+                <td>${dataProduct[i].discount}</td>
+                <td>${dataProduct[i].btnTotal}</td>
+                <td>${dataProduct[i].category}</td>
+                <td><button id="update" onclick="updateDate(${i})" class="btn">Update</button></td>
+                <td><button id="delete" onclick="deleteOneProduct(${i})" class="btn">Delete</button></td>
+            </tr>`
+            }
+
+        }
+    }
+    document.getElementById('tbody').innerHTML = table;
+}
 ShowData();
